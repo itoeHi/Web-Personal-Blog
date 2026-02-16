@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 个人博客{% endblock %}
+
+{% block content %}
+<div class="blog-header">
+    <h2>最新文章</h2>
+    <p>分享我的想法和经历</p>
+</div>
+
+<div class="articles-list">
+    {% if articles %}
+        {% for article in articles %}
+        <article class="article-summary">
+            <h3><a href="{{ url_for('show_article', article_id=article.id) }}">{{ article.title }}</a></h3>
+            <div class="article-meta">
+                <time datetime="{{ article.date }}">{{ article.date }}</time>
+            </div>
+            <div class="article-excerpt">
+                {{ article.content[:200] }}{% if article.content|length > 200 %}...{% endif %}
+            </div>
+            <a href="{{ url_for('show_article', article_id=article.id) }}" class="read-more">阅读全文 →</a>
+        </article>
+        {% endfor %}
+    {% else %}
+        <div class="no-articles">
+            <p>暂无文章发布</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

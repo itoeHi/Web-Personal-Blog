@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}编辑文章 - 个人博客{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>编辑文章</h2>
+    
+    <form method="POST" action="{{ url_for('edit_article', article_id=article.id) }}">
+        <div class="form-group">
+            <label for="title">文章标题</label>
+            <input type="text" id="title" name="title" value="{{ article.title }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="date">发布日期</label>
+            <input type="date" id="date" name="date" value="{{ article.date_input }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="content">内容</label>
+            <textarea id="content" name="content" rows="15" required>{{ article.content }}</textarea>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">更新文章</button>
+            <a href="{{ url_for('admin_dashboard') }}" class="btn btn-secondary">取消</a>
+            <a href="{{ url_for('show_article', article_id=article.id) }}" class="btn btn-view">预览</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
