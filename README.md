@@ -101,7 +101,7 @@ A simple personal blog of web that show all articles. There are two sections -- 
 
 
 
-### FileStatement
+## FileStatement
 #### `app.py`: 
 The `main Flask application file` that sets up the routes and handles the requests for the blog.
 #### create_sample_data.py:
@@ -146,8 +146,8 @@ The MIT license file for the project.
 
 
 
-### Usage
-#### Storage
+## Usage
+### Storage
 The project store article data in JSON format.
 Each article data include:
 + id: Integer, unique identifier for the article.
